@@ -2,14 +2,20 @@
 layout: page
 title: About
 permalink: /about/
+published: true
+---
+## Hi, I'm **CxRedix**.
+
+> I like to make and try out fun and interesting stuff.
+> Currently a hobbyist game developer.
+
 ---
 
-Some information about you!
+Engines I use:
+- Unity Engine
+- Godot Engine
+- Unreal Engine
 
-### More Information
-
-A place to include any other types of information that you'd like to include about yourself.
-
-### Contact me
-
-[email@domain.com](mailto:email@domain.com)
+Languages I use:
+- C#
+- C++
