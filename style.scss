@@ -18,7 +18,7 @@ html {
 }
 
 body {
-  background: #282A36;
+  background: $lightGray;
   font: 18px/1.4 $helvetica;
   color: $white;
 }
@@ -277,7 +277,7 @@ nav {
   margin-top: 50px;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-  background-color: $lightGray;
+  background-color: $darkGray;
 }
 
 footer {
