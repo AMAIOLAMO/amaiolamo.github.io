@@ -14,10 +14,56 @@ $gray: #666;
 $lightGray: #f8f8f2;
 $white: #fff;
 
+// DRACULA THEME COLORS
+$dracula-background: #282a36;
+
+$dracula-white: #f8f8f2;
+
+// ==== common ====
+$color-hover-link: #4183C4;
+
+$color-moz-selection-content: $white;
+$color-moz-selection-background: $dracula-white;
+
+$color-selection-content: $white;
+$color-selection-background: $dracula-white;
+
+// ==== blockquotes ====
+$color-blockquote-border-left: $gray;
+$color-blockquote-content: $gray;
+
+// ==== headers ====
+$color-h4-content: $gray;
+
+// ==== meta ====
+$color-date-content: $gray;
+
+
+// ==== site ====
+$color-masthead-border-bottom: $lightGray;
+
+$color-body-content: $dracula-white;
+
+$color-site-name-content: $dracula-white;
+
+$color-site-description-content: $gray;
+
+$color-wrapper-footer-background: $darkerGray;
+
+// ==== nav ====
+$color-nav-normal-link: $dracula-white;
+
+// ==== post ====
+$color-post-border-bottom: $lightGray;
+
+
+
 // Font stacks
 $helvetica: Helvetica, Arial, sans-serif;
 $helveticaNeue: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $georgia: Georgia, serif;
+
+$nav-font-family: $heleveticaNeue;
 
 // Mobile breakpoints
 @mixin mobile {

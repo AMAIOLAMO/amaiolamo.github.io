@@ -18,10 +18,10 @@ html {
 }
 
 body {
-	background: #282a36;
-  background-color: #282a36;
+	background: $dracula-background;
+  background-color: $dracula-background;
   font: 18px/1.4 $helvetica;
-  color: #f8f8f2;
+  color: $color-body-content;
 }
 
 .container {
@@ -33,7 +33,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $helveticaNeue;
-  color: #f8f8f2;
+  color: $color-body-content;
   font-weight: bold;
 
   line-height: 1.7;
@@ -63,7 +63,7 @@ h3 {
 
 h4 {
   font-size: 18px;
-  color: $gray;
+  color: $color-h4-content;
 }
 
 p {
@@ -71,11 +71,11 @@ p {
 }
 
 a {
-  color: $blue;
+  color: $color-hover-link;
   text-decoration: none;
 	cursor: pointer;
   &:hover, &:active {
-    color: $blue;
+    color: $color-hover-link;
   }
 }
 
@@ -119,83 +119,19 @@ img {
 
 .date {
   font-style: italic;
-  color: $gray;
+  color: $color-date-content;
   text-align: center;
 }
 
 // Specify the color of the selection
 ::-moz-selection {
-  color: $black;
-  background: $lightGray;
+  color: $color-moz-selection-content;
+  background: $color-moz-selection-background;
 }
 ::selection {
-  color: $black;
-  background: $lightGray;
-}
+  color: $color-selection-content;
+  color: $color-site-name-content;
 
-// Nicolas Gallagher's micro clearfix hack
-// http://nicolasgallagher.com/micro-clearfix-hack/
-.clearfix:before,
-.clearfix:after {
-    content: " ";
-    display: table;
-}
-
-.clearfix:after {
-    clear: both;
-}
-
-/*********************/
-/* LAYOUT / SECTIONS */
-/*********************/
-
-//
-// .masthead
-//
-
-.wrapper-masthead {
-  margin-bottom: 50px;
-}
-
-.masthead {
-  padding: 20px 0;
-  border-bottom: 1px solid $lightGray;
-
-  @include mobile {
-    text-align: center;
-  }
-}
-
-.site-avatar {
-  float: left;
-  width: 70px;
-  height: 70px;
-  margin-right: 15px;
-
-  @include mobile {
-    float: none;
-    display: block;
-    margin: 0 auto;
-  }
-
-  img {
-    border-radius: 5px;
-  }
-}
-
-.site-info {
-  float: left;
-
-  @include mobile {
-    float: none;
-    display: block;
-    margin: 0 auto;
-  }
-}
-
-.site-name {
-  margin: 0;
-  color: #f8f8f2;
   cursor: pointer;
   font-family: $helveticaNeue;
   font-weight: 300;
@@ -205,7 +141,7 @@ img {
 
 .site-description {
   margin: -5px 0 0 0;
-  color: $gray;
+  color: $color-site-description-content;
   font-size: 16px;
 
   @include mobile {
@@ -228,14 +164,14 @@ nav {
 
   a {
     margin-left: 20px;
-    color: #f8f8f2;
+    color: $color-nav-normal-link;
     text-align: right;
     font-weight: 300;
     letter-spacing: 1px;
 
     @include mobile {
       margin: 0 10px;
-      color: $blue;
+      color: $color-hover-link;
     }
   }
 }
@@ -246,7 +182,7 @@ nav {
 
 .posts > .post {
   padding-bottom: 2em;
-  border-bottom: 1px solid $lightGray;
+  border-bottom: 1px solid $color-post-border-bottom;
 }
 
 .posts > .post:last-child {
@@ -257,9 +193,9 @@ nav {
 .post {
   blockquote {
     margin: 1.8em .8em;
-    border-left: 2px solid $gray;
+    border-left: 2px solid $color-blockquote-border-left;
     padding: 0.1em 1em;
-    color: $gray;
+    color: $color-blockquote-content;
     font-size: 22px;
     font-style: italic;
   }
@@ -278,7 +214,7 @@ nav {
   margin-top: 50px;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-  background-color: $darkerGray;
+  background-color: $color-wrapper-footer-background;
 }
 
 footer {
