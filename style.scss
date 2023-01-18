@@ -216,7 +216,7 @@ img {
 nav {
   float: right;
   margin-top: 23px; // @TODO: Vertically middle align
-  font-family: $helveticaNeue;
+  font-family: $nav-font-family;
   font-size: 18px;
 
   @include mobile {
@@ -235,7 +235,7 @@ nav {
 
     @include mobile {
       margin: 0 10px;
-      color: $color-hover-link;
+      color: $color-nav-normal-link;
     }
   }
 }
