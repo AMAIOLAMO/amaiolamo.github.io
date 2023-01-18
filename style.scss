@@ -268,7 +268,7 @@ nav {
     margin-top: 10px;
   }
 
-  .read-more {
+  .continue {
     text-transform: uppercase;
     font-size: 15px;
   }
@@ -278,6 +278,7 @@ nav {
   margin-top: 50px;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
+  background: $color-wrapper-footer-background;
   background-color: $color-wrapper-footer-background;
 }
 
