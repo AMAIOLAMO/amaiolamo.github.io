@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Tools
-permalink: /tools/
+permalink: /projects/tools/
 published: true
 ---
 
@@ -9,6 +9,11 @@ published: true
 ### Godot
 
 ### C#
+ - [C# code utilities](https://github.com/AMAIOLAMO/CXUtils-CSharp)
+
 ### C++
+
+### GDScript
+ - [GDScript code utilities](https://github.com/AMAIOLAMO/CXUtils-GDScript)
 
 (Links are added later.)
