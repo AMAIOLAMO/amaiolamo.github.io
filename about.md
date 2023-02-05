@@ -8,7 +8,7 @@ published: true
 
 >
 I like to make and try out fun and interesting stuff.
-Currently a hobbyist game developer.
+A hobbyist game developer.
 
 Engines I use:
 - Unity Engine
