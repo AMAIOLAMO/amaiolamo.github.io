@@ -7,7 +7,7 @@ Today I had an idea on which we could register multiple modifiers to change a si
 
 I called it: Value Modifiers
 
-here's the repository to it: https://github.com/AMAIOLAMO/Value-Modifiers-CSharp
+here's the repository to it: [Value Modifiers](https://github.com/AMAIOLAMO/Value-Modifiers-CSharp)
 
 I was inspired by the modifiers from Blender, each object / mesh contains multiple modifiers
 that modifies the original mesh in some way, but does not destroys the original mesh.
