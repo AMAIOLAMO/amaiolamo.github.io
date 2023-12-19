@@ -96,6 +96,11 @@ ol ul, ul ol, ul ul, ol ol {
   margin: 0;
 }
 
+li {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
 ul ul, ol ul {
   list-style-type: circle;
 }
