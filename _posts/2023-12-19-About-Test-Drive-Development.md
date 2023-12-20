@@ -54,29 +54,157 @@ Which, in other words, basically boils down to:
 5. Refactor duplication and dirtyness
 6. Move on / Rinse and Repeat
 
-Red-Green-Refactor is another motto to understand this certain flow, Where Red means fail, Green means making it succeed, then the important Refactor~
+Red-Green-Refactor is another motto to understand this certain flow,
+Where Red means fail, Green means making it succeed, then the important Refactor~
 
 The heart and core of TDD is to do things **quickly**, and in **small enough increments**, and at the same time, making sure the code quality is maintained, making sure everything is under control (of course, there are still situations where control is hard or near impossible to have)
 
 Let's have a few real world examples on how this could be potentially applied (there also would be counter examples, so fear not)
 
+I will be using C# for the following examples, but it should apply to other object-oriented languages as well! (maybe also functional languages perhaps?)
+
+For the Test Framework, I will be using NUnit
+
 # Example 1 - Looting System
 
 Given the following requirements:
-> Write a `Looting System` in which has a single procedure: `RandChooseLoot` that, upon given a loot table with weights and item names, will return a random loot in the table, given the weight.
+> Write a `Looting System` in which has a single procedure: `RandChoose` that, upon given a loot table with weights and item names, will return a random loot in the table, given the weight.
+
 > The higher the weight is, the more probability it will be chosen among all loot.
+
 > Example:
+
 > Suppose we have a table -> (3, stone) (1, fish)
-> then it implies that => stone has a 3 out of 4 chance to be selected, fish has a 1 out of 4 chance to be selected
-> so then if stone has been chosen, `RandChooseLoot` will then return the name of the loot, which is "stone"
+
+> then it implies that => stone has a 3 out of 4 chance to be selected, fish has a 1 out of 4 chance to be selected.
+> so then if stone has been chosen, `RandChoose` will then return the name of the loot, which is "stone".
 
 How would one approach this system in a TDD way?
 
 let's have a quick discussion before we start writing anything(they always help):
 1. We would need a `Looting System`, it could be in a form of class
-2. We would need a function with the name "RandChooseLoot" in that class
-3. The inputs of `RandChooseLoot` requires a table of weights that matches with their item names, it could be in a form of pairs
-4. 
+2. We would need a function with the name `RandChoose` in that class
+3. The inputs of `RandChoose` requires a table of weights that matches with their item names, it could be in a form of pairs
+4. Finally, `RandChoose` should simply return the name of the item randomly chosen
+
+So, according to TDD, we should start with the most simplest as of right now we can think of
+In another way, we can think of how to use `RandChoose` in the most simplest way, An entirely empty table!
+
+let's start with a unit test!
+
+```csharp
+[TestFixture]
+public class LootSystemTests
+{
+	[Test]
+	public void TestEmpty()
+	{
+		string result = LootSystem.RandChoose( new List<(int weight, string itemName)>() );
+		string expected = string.Empty;
+
+		Assert.That( result, Is.EqualTo( expected ) );
+	}
+}
+```
+
+This test first calls the `RandChoose` static function from the `LootSystem` class, passes in an empty list of a `tuple` (int, string),
+and expects an empty string return.
+
+Currently, we definitely do not have the class `LootSystem`, the static method `RandChoose`,
+so let's make it compile by adding the two things needed.
+
+```csharp
+public class LootSystem
+{
+	public static string RandChoose( List<(int weight, string itemName)> lootTable )
+	{
+		return "DONT COMPILE";
+	}
+}
+```
+
+note that you can see, I returned "DONT COMPILE" instead of an empty string, in TDD, we usually expect failure,
+now I can hear some you may say: "Why should I do this when I already know the answer is right there?", and you are right.
+I am just writing this to demonstrate how TDD can work, but doesn't mean that it should be enforced.
+
+so continue, we can see that, easily, when we run the test, it definitely fails.
+
+now we are in next stage, let's make this suceed in the easiest way!
+
+```csharp
+public static string RandChoose( List<(int weight, string itemName)> lootTable )
+{
+  return string.Empty;
+}
+```
+
+Simply we just return an empty string! Bam, baby and small incremental steps.
+
+After making sure that the test pass, make it green, we can now continue to the most important part: Remove duplication
+
+Alright, you ask: "where is the duplication?", "we only have a single string.Empty..."
+
+Wait wait wait, now, hold there, look at where string.Empty occured... Yes~ It occurred both in the Test and in the implementation!
+
+So to remove such duplication, what we usually do is to "generalize". We can start thinking where does this `string.Empty` comes from?
+
+It is an exceptional case! So right now, without other tests to help, we can't really generalize up, So let's not remove this duplication.. just yet :D
+
+let's move onto test 2
+
+```csharp
+[Test]
+public void TestOneItem()
+{
+  string result = LootSystem.RandChoose
+  (
+    new List<(int weight, string itemName)>
+    {
+      ( 10, "Stone" )
+    }
+  );
+  string expected = "Stone";
+
+  Assert.That( result, Is.EqualTo( expected ) );
+}
+```
+
+So here, we move onto the next easiest case, which is testing one single loot item, and we expect "Stone" being always the result.
+
+So running the test, Expecting it fail.
+
+Now let's move onto trying to do the easiest way to fix it! And by easiest... I meant changing it into if case!
+
+```csharp
+public static string RandChoose( List<(int weight, string itemName)> lootTable )
+{
+  if ( lootTable.Count == 0 )
+    return string.Empty;
+
+  return "Stone";
+}
+```
+
+Now the test should succeed, and let's check for duplication.
+
+Aha, "Stone" is a duplication of the "Stone" in the test! How would one generalize a constant?
+One way is to generalize into a variable, so which variable stores the word "Stone"?
+
+the `lootTable`'s first element!
+
+so let's do just that.
+
+```csharp
+public static string RandChoose( List<(int weight, string itemName)> lootTable )
+{
+  if ( lootTable.Count == 0 )
+    return string.Empty;
+
+  return lootTable[ 0 ].itemName;
+}
+```
+
+now this should still work, let's see if there's any other duplication
 
 
 
