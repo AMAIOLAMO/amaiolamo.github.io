@@ -7,14 +7,15 @@ published: true
 ### Hi, I'm **CxRedix**.
 
 >
-I like to make and try out fun and interesting stuff.
-A hobbyist game developer.
+I am a hobbyist game developer, I like cute stuff (≧▽≦)
+
+I mainly use Godot and Unreal Engine, C#, C++ and sometimes python.
 
 Engines I use:
-- Unity Engine
-- Godot Engine
-- Unreal Engine
+- Godot
+- Unreal
 
 Languages I use:
 - C#
 - C++
+- Python
