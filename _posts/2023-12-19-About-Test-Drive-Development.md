@@ -47,17 +47,47 @@ According to the book Test-Driven Development By Example, these are the basic rh
 5. Refactor to remove duplication
 
 Which, in other words, basically boils down to:
-> Write Tests -> Expect Failure -> Change in DIRTY Baby steps -> Expect Succeeed -> Refactor duplication and dirtyness (rinse and repeat)
+1. Write Tests
+2. Expect Failure
+3. Change in DIRTY Baby steps
+4. Expect Succeeed
+5. Refactor duplication and dirtyness
+6. Move on / Rinse and Repeat
 
-In other terms, Red-Green-Refactor is an easier to remember  
+Red-Green-Refactor is another motto to understand this certain flow, Where Red means fail, Green means making it succeed, then the important Refactor~
 
-The heart and core of TDD is to do things **quickly**, and in **small enough increments**, making sure everything is under control (of course, there are still situations where control is hard or near impossible to be under)
+The heart and core of TDD is to do things **quickly**, and in **small enough increments**, and at the same time, making sure the code quality is maintained, making sure everything is under control (of course, there are still situations where control is hard or near impossible to have)
+
+Let's have a few real world examples on how this could be potentially applied (there also would be counter examples, so fear not)
+
+# Example 1 - Looting System
+
+Given the following requirements:
+> Write a `Looting System` in which has a single procedure: `RandChooseLoot` that, upon given a loot table with weights and item names, will return a random loot in the table, given the weight.
+> The higher the weight is, the more probability it will be chosen among all loot.
+> Example:
+> Suppose we have a table -> (3, stone) (1, fish)
+> then it implies that => stone has a 3 out of 4 chance to be selected, fish has a 1 out of 4 chance to be selected
+> so then if stone has been chosen, `RandChooseLoot` will then return the name of the loot, which is "stone"
+
+How would one approach this system in a TDD way?
+
+let's have a quick discussion before we start writing anything(they always help):
+1. We would need a `Looting System`, it could be in a form of class
+2. We would need a function with the name "RandChooseLoot" in that class
+3. The inputs of `RandChooseLoot` requires a table of weights that matches with their item names, it could be in a form of pairs
+4. 
 
 
-This is not really particularly useful nor interesting, so let's have a few real world examples on how this could be potentially applied (there also would be counter examples, so fear not)
-
-# Example 1 - 
 
 # Pros
+- It can remove the fear of changing, refactoring and deleting code, Since you know a lot of tests backs the code up.
+- Write only what is **neccessary**.
+- Tests acts as an example and documentation.
+- It can help orient / influence your design code towards end users for your API since you are constantly writing Tests that uses the API.
+- It helps decouple your code, since writing a test in the first place may require you to decouple in order to test.
 
 # Cons
+- The real benefits of TDD only comes at a pretty late stage of development
+- The time and effort of using TDD is quite high compared to immediately write code and test it right after
+- Some systems aren't easily / near impossible to test and mock, examples are such like: Simulations, Randomness and or multi-threading. (although if systems are designed with decoupling in mind, these could still be potentially tested, it all depends on the design of the system)
