@@ -4,23 +4,21 @@ It has been a while since I last wrote a post, I was working more on my own life
 
 # TDD, Extreme and Agile
 
-I was recently playing with TDD (Test Driven Development), and am particularly interested in [Extreme Programming](https://en.wikipedia.org/wiki/Extreme_programming) with [Agile Development](https://en.wikipedia.org/wiki/Agile_software_development).
+As far as I have gotten in programming and designing systems. I always have been not quite happy with my performance, Sometimes to the point where it's sometimes demotivating.
+And that is also why I am recently quite interested in TDD (Test Driven Development), [Extreme Programming](https://en.wikipedia.org/wiki/Extreme_programming) and [Agile Development](https://en.wikipedia.org/wiki/Agile_software_development).
 
-As far as I have gotten in programming, and designing systems. I have always been quite slow, and it's sometimes demotivating, so TDD, Extreme and Agile Development sparked my interest.
-
-There are several books I've read while trying it myself, a book to note is [Test-Driven Development By Example - Kent Beck](https://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530), it may be hard to read at first (believe me, programming sins all over the place), but it does give some practical examples on how to tackle a TDD by literally solving a complex example throughout the book.
+There are several books I've read while trying it myself, a book to note is [Test-Driven Development By Example - Kent Beck](https://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530), it may be hard to read at first (believe me, temporary programming sins all over the place), but it does give some practical examples on how to do TDD by literally solving a complex example throughout the book.
 
 My goal in this post is hoping to clear up peoples' understanding on what TDD is and what TDD IS NOT after trying it for almost half a year. (because people do seemingly misunderstood / misuse TDD)
 
-
 # What is it?
 
-In short for you folks who do not know about what TDD is about:
+In short for you folks who do not know about what TDD is:
 > Test Drive development is a software development process which relies on converting requirements into test cases that can be potentially fully tested.
 
-before we get into what exactly you do, in TDD and why, we should make very clear points on common misconceptions about TDD.
+before we get into what exactly you do, in TDD and why, we should make very clear points on common misconceptions, pros and cons about TDD.
 
-# Common Misconceptions
+# Common Misconceptions, Pros & Cons
 
 1. Thinking that TDD can replace design (no it cannot, it can only help influence you to design towards end users)
     - this is quite a bad misunderstanding on what TDD can actually do; Yes, it does help you with design, probably change your way on thinking your designing choices, BUT, that doesn't mean you don't need to think about design in the first place.
@@ -33,6 +31,17 @@ before we get into what exactly you do, in TDD and why, we should make very clea
 3. We MUST TDD in all cases! (or in other words: to have near 100% test coverage!)
     - same idea as what I have said above in 2, it is just not worth your time and effort trying to write a unit test for just a few lines of code that may not be critical in your software
   
+# Pros
+- It can remove the fear of changing, refactoring and deleting code, Since you know a lot of tests backs the code up.
+- Write only what is **neccessary**.
+- Tests acts as an example and documentation.
+- It can help orient / influence your design code towards end users for your API since you are constantly writing Tests that uses the API.
+- It helps decouple your code, since writing a test in the first place may require you to decouple in order to test.
+
+# Cons
+- The real benefits of TDD only comes at a pretty late stage of development
+- The time and effort of using TDD is quite high compared to immediately write code and test it right after
+- Some systems aren't easily / near impossible to test and mock, examples are such like: Simulations, Randomness and or multi-threading. (although if systems are designed with decoupling in mind, these could still be potentially tested, it all depends on the design of the system)
 
 With those out of the way! Let's finally introduce you on the steps exactly on how to use TDD~
 
@@ -87,7 +96,7 @@ let's have a quick discussion before we start writing anything(they always help)
 4. Finally, `RandChoose` should simply return the name of the item randomly chosen
 
 So, according to TDD, we should start with the most simplest as of right now we can think of
-In another way, we can think of how to use `RandChoose` in the most simplest way, An entirely empty table!
+In other words, think of how to use `RandChoose` in the most simplest way: An entirely empty table as an input can be a good start.
 
 ### First Test
 let's start with a unit test!
@@ -110,7 +119,7 @@ public class LootSystemTests
 This test first calls the `RandChoose` static function from the `LootSystem` class, passes in an empty list of a `tuple` (int, string),
 and expects an empty string return.
 
-Currently, we definitely do not have the class `LootSystem`, the static method `RandChoose`,
+Currently, we do not have the class `LootSystem`, the static method `RandChoose`,
 so let's make it compile by adding the two things needed.
 
 ```csharp
@@ -127,9 +136,7 @@ note that you can see, I returned "DONT COMPILE" instead of an empty string, in 
 now I can hear some you may say: "Why should I do this when I already know the answer is right there?", and you are right.
 I am just writing this to demonstrate how TDD can work, but doesn't mean that it should be enforced.
 
-so continue, we can see that, easily, when we run the test, it definitely fails.
-
-now we are in next stage, let's make this suceed in the easiest way!
+Now When we run the test, it will fail. After seeing it fail, we will then make it succeed in the most simplest way!
 
 ```csharp
 public static string RandChoose( List<(int weight, string itemName)> lootTable )
@@ -138,15 +145,15 @@ public static string RandChoose( List<(int weight, string itemName)> lootTable )
 }
 ```
 
-Simply we just return an empty string! Bam, baby and small incremental steps.
+We simply just return an empty string! Bam, baby and small incremental steps.
 
-After making sure that the test pass, make it green, we can now continue to the most important part: Remove duplication
+After making sure that the test pass, we can now continue to the most important part: Removing duplication
 
 Alright, you ask: "where is the duplication?", "we only have a single string.Empty..."
 
 Wait wait wait, now, hold there, look at where string.Empty occured... Yes~ It occurred both in the Test and in the implementation!
 
-So to remove such duplication, what we usually do is to "generalize". We can start thinking where does this `string.Empty` comes from?
+So to remove such duplication, what we usually do is to "generalize"(there's whole another topic around this, I will discuss it in another post). We can start thinking where does this `string.Empty` comes from?
 
 It is an exceptional case! So right now, without other tests to help, we can't really generalize up, So let's not remove this duplication.. just yet :D
 
@@ -170,11 +177,11 @@ public void TestOneItem()
 }
 ```
 
-So here, we move onto the next easiest case, which is testing one single loot item, and we expect "Stone" being always the result.
+We then move onto the next easiest case, which is testing one single loot item, and we expect "Stone" being always the result.
 
-So running the test, Expecting it fail.
+Running the test, Expecting it fail.
 
-Now let's move onto trying to do the easiest way to fix it! And by easiest... I meant changing it into if case!
+Then let's move onto trying to do the easiest way to fix it! And by easiest... I meant changing it into if case!
 
 ```csharp
 public static string RandChoose( List<(int weight, string itemName)> lootTable )
@@ -186,9 +193,9 @@ public static string RandChoose( List<(int weight, string itemName)> lootTable )
 }
 ```
 
-Now the test should succeed, and let's check for duplication.
+The test should succeed, and let's check for duplication.
 
-Aha, "Stone" is a duplication of the "Stone" in the test! How would one generalize a constant?
+Aha! "Stone" is a duplication of the "Stone" in the test! How would one generalize a constant?
 One way is to generalize into a variable, so which variable stores the word "Stone"?
 
 the `lootTable`'s first element!
@@ -206,7 +213,7 @@ public static string RandChoose( List<(int weight, string itemName)> lootTable )
 ```
 
 ### Third Test
-Moving onto the third test, which will change a lot of things later on.
+Moving onto the third test. This test will change a lot of things later on.
 
 ```csharp
 [Test]
@@ -226,19 +233,25 @@ public void TestTwoItems()
 }
 ```
 
-Now, while writing the third test, you can immediately see one problem. We cannot simply test randomization!
+As you can see writing the third test isn't that easy, a problem arises. We cannot predict the output of a randomization!
 
-So that must mean our design has some flaws, rendering it to be not testable. Thus, before we continue onwards, we should have another updated design discussion again.
+So that **must** mean our design has some flaws, rendering it to be not testable. So, in order to continue, we should fix this immediately.
 
 Our problem here is the test (user side) cannot determine the output of `RandChoose`, but we also do not want to expose the contents of **LootSystem**.
 
-So instead, we could redesign the request to allow the input to also predict what the Choosing Method can handle.
+So, either we can inject a `Random` class into `LootSystem`, then mock that `Random` class to deterministic, or we could redesign the request to allow the input to also predict what the Choosing Method can handle!
 
-In our situation, `RandChoose` can receive another argument, that argument can be used to determine the output, although now, the randomization is given to the user to determine!
+Second one is much easier, so let's do that!
 
-That makes the system more modular, as now the user can have customization on how to handle the determining factor of randomization, instead of the `LootSystem` handling this.
+So let's allow `RandChoose` to receive another argument, that argument can be used to determine the output. That also means we have given the randomization work to the user!
+
+That makes the system slightly more modular, as now the user can have customization on how to handle the determining factor of randomization, instead of the `LootSystem` handling it.
 
 So before we continue, we know that our design is flawed, we should comment out the third test, because we cannot simply make it compile easily in the first step.
+
+(Note: this may not work in some situations, where you can't really change the request, but rather only work around it. Here I am modifying the request)
+
+Then we add a new argument that is used to determine the output of the choosing algorithm
 
 ```csharp
 public static string RandChoose( float choiceValue, List<(int weight, string itemName)> lootTable )
@@ -250,7 +263,7 @@ And since, RandChoose isn't really `Random` anymore, we can safely remove the `R
 public static string Choose( float choiceValue, List<(int weight, string itemName)> lootTable )
 ```
 
-Now, our older tests are shouting to be fixed, so let's fix them quickly.
+After that, our older tests are shouting to be fixed, so let's fix them by giving dummy values.
 
 ```csharp
 [Test]
@@ -281,7 +294,7 @@ public void TestOneItem()
 }
 ```
 
-Now after getting success from the tests, we can continue to uncomment the third test, and write down the functionality we wanted.
+After ensuring that the tests still are successful, we can continue by uncommenting the third test, and write down the functionality we wanted.
 
 ```csharp
 [Test]
@@ -304,10 +317,9 @@ public void TestTwoItems()
   Assert.That( result, Is.EqualTo( expected ) );
 }
 ```
+You can see above in the comments of the code, we are selecting objects based on weight ranges.
 
-So to be more clear, I wrote some more exact situation on how we would want to expect the `Choose` to should function given the `choiceValue`
-
-Running the test and expecting a failure, let's continue converting it into an if statement
+Running the test and expecting a failure, let's continue by adding an if statement
 
 ```csharp
 public static string Choose( float choiceValue, List<(int weight, string itemName)> lootTable )
@@ -322,7 +334,7 @@ public static string Choose( float choiceValue, List<(int weight, string itemNam
 }
 ```
 
-Running the test, we have passed... Now onto removing duplication. Here you can see that "Sand" is an obvious duplication between implementation and the test, we can change it to be more generalized by using `lootTable[1].itemName`.
+Upon checking the tests still pass... Now onto removing duplication. Here you can see that "Sand" is an obvious duplication between implementation and the test, we can change it to be more generalized by using `lootTable[1].itemName`.
 
 ```csharp
 if ( lootTable.Count == 1 )
@@ -704,18 +716,6 @@ Even though it seems that TDD is really smooth along the way, but that isn't alw
 
 So I will just show some Pros and Cons I have discovered while using TDD.
 
-
-# Pros
-- It can remove the fear of changing, refactoring and deleting code, Since you know a lot of tests backs the code up.
-- Write only what is **neccessary**.
-- Tests acts as an example and documentation.
-- It can help orient / influence your design code towards end users for your API since you are constantly writing Tests that uses the API.
-- It helps decouple your code, since writing a test in the first place may require you to decouple in order to test.
-
-# Cons
-- The real benefits of TDD only comes at a pretty late stage of development
-- The time and effort of using TDD is quite high compared to immediately write code and test it right after
-- Some systems aren't easily / near impossible to test and mock, examples are such like: Simulations, Randomness and or multi-threading. (although if systems are designed with decoupling in mind, these could still be potentially tested, it all depends on the design of the system)
 
 
 Have fun and stay tuned for the next blog, Cheers!
