@@ -714,8 +714,7 @@ After all that, I hope you can see how TDD can help design, and sometimes help y
 
 Even though it seems that TDD is really smooth along the way, but that isn't always the case, I won't go into detail in this blog since it's already very long.
 
-So I will just show some Pros and Cons I have discovered while using TDD.
-
+So that basically concludes my very long introduction of TDD!
 
 
 Have fun and stay tuned for the next blog, Cheers!
