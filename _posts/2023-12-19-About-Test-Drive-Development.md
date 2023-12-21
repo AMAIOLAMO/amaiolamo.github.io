@@ -1,11 +1,10 @@
-(Post is not yet finished, this is a draft)
 Long time no see!
 
 It has been a while since I last wrote a post, I was working more on my own life, and now I feel better than ever~
 
-# Something I've learnt
+# TDD, Extreme and Agile
 
-So enough chit chatting, I was recently playing with TDD (Test Driven Development), and am particularly interested in [Extreme Programming](https://en.wikipedia.org/wiki/Extreme_programming) with [Agile Development](https://en.wikipedia.org/wiki/Agile_software_development).
+I was recently playing with TDD (Test Driven Development), and am particularly interested in [Extreme Programming](https://en.wikipedia.org/wiki/Extreme_programming) with [Agile Development](https://en.wikipedia.org/wiki/Agile_software_development).
 
 As far as I have gotten in programming, and designing systems. I have always been quite slow, and it's sometimes demotivating, so TDD, Extreme and Agile Development sparked my interest.
 
@@ -24,11 +23,11 @@ before we get into what exactly you do, in TDD and why, we should make very clea
 # Common Misconceptions
 
 1. Thinking that TDD can replace design (no it cannot, it can only help influence you to design towards end users)
-    - this is quite a bad way on expecting TDD can design; Yes it does help you with design, probably change your way on thinking your designing choices, BUT, that doesn't mean you don't need to think about design in the first place.
-    - It is a great tool to help and influces your design, to help you think in the perspective of users of your system / code, writing what is only neccessary (which is [YAGNI - extreme programming principle](https://en.wikipedia.org/wiki/You_aren't_gonna_need_it))
+    - this is quite a bad misunderstanding on what TDD can actually do; Yes, it does help you with design, probably change your way on thinking your designing choices, BUT, that doesn't mean you don't need to think about design in the first place.
+    - It is a great tool to help and influences your design, to help you think in the perspective of users of your system / code, writing what is only neccessary (which is [YAGNI - extreme programming principle](https://en.wikipedia.org/wiki/You_aren't_gonna_need_it))
 
 2. we MUST follow TDD principles at all times
-    - no, that, in my honest opinion, is just not worth it, due to the cost of writing the unit test, time to running the test, doesn't really help much.
+    - no, that, in my honest opinion, is just not worth it, if you are working on a very tiny method / small algorithm that is probably not critical, the cost of writing the unit test, time to running the test takes longer than just writing them in one go.
     - Principles are just Principles, they are meant to help you design, not to give burden, only use them when you know they can really help you reduce your work a ton / really shine.
   
 3. We MUST TDD in all cases! (or in other words: to have near 100% test coverage!)
@@ -57,7 +56,7 @@ Which, in other words, basically boils down to:
 Red-Green-Refactor is another motto to understand this certain flow,
 Where Red means fail, Green means making it succeed, then the important Refactor~
 
-The heart and core of TDD is to do things **quickly**, and in **small enough increments**, and at the same time, making sure the code quality is maintained, making sure everything is under control (of course, there are still situations where control is hard or near impossible to have)
+The heart and core of TDD is to do things **quickly**, and in **small enough increments**, and at the same time, making sure the code quality is maintained, and also making sure that everything is under control (of course, there are still situations where control is hard or near impossible to have)
 
 Let's have a few real world examples on how this could be potentially applied (there also would be counter examples, so fear not)
 
@@ -70,7 +69,7 @@ For the Test Framework, I will be using NUnit
 Given the following requirements:
 > Write a `Looting System` in which has a single procedure: `RandChoose` that, upon given a loot table with weights and item names, will return a random loot in the table, given the weight.
 
-> The higher the weight is, the more probability it will be chosen among all loot.
+> The higher the weight is, the higher the probability that it will be chosen among all loot in the loot table.
 
 > Example:
 
@@ -90,6 +89,7 @@ let's have a quick discussion before we start writing anything(they always help)
 So, according to TDD, we should start with the most simplest as of right now we can think of
 In another way, we can think of how to use `RandChoose` in the most simplest way, An entirely empty table!
 
+### First Test
 let's start with a unit test!
 
 ```csharp
@@ -150,6 +150,7 @@ So to remove such duplication, what we usually do is to "generalize". We can sta
 
 It is an exceptional case! So right now, without other tests to help, we can't really generalize up, So let's not remove this duplication.. just yet :D
 
+### Second Test
 let's move onto test 2
 
 ```csharp
@@ -204,6 +205,7 @@ public static string RandChoose( List<(int weight, string itemName)> lootTable )
 }
 ```
 
+### Third Test
 Moving onto the third test, which will change a lot of things later on.
 
 ```csharp
@@ -384,6 +386,8 @@ Running the test to make sure it's still green bar.
 Then here's the interesting part. There's still more to generalize / remove duplication in this case. But how do we do that?
 If you still cannot see it, we can continue to write another test, it will be similar to the third case, but slightly altered.
 
+### Alternative Third Test
+
 ```csharp
 [Test]
 public void TestTwoItems2()
@@ -402,7 +406,304 @@ public void TestTwoItems2()
 }
 ```
 
-so as you can see, I only changed the choice Value, 
+So as you can see, I only changed the choice Value, and after running it, definitely it will get an error.
+
+To solve this... We yet give another if statement! This time, we check whether or not the choice Value is within the range of the first loot's weight.
+
+```csharp
+public static string Choose( float choiceValue, List<(int weight, string itemName)> lootTable )
+{
+  if ( lootTable.Count == 0 )
+    return string.Empty;
+
+  if ( lootTable.Count == 1 )
+    return lootTable[ 0 ].itemName;
+
+  if ( choiceValue <= 6f / 7f )
+    return lootTable[ 0 ].itemName;
+
+  return lootTable[ 1 ].itemName;
+}
+```
+
+So now tests should run again, let's start cleaning up the code. First we can see 6f / 7f is a duplication between tests and the implementation.
+
+```csharp
+( 6, "Stone" ), // probability: 6/7 -> 0.857 <=> range: 85.7% -> 0 ~ 0.857
+( 1, "Sand" ) // probability: 1/7 -> 0.143 <=> range: 14.3% -> 0.857 ~ (0.857 + 0.143) = 1
+```
+
+In our implementation, the 6f represents the 6 in the Stone's weight, so it could be represented as `lootTable[0].weight`, for 7f, it just means all the weights summed together, which is 6 + 1 = `lootTable[0].weight + lootTable[1].weight`
+
+so in short `lootTable[0].weight / (lootTable[0].weight + lootTable[1].weight)`, do remember we should cast one side of the division as float, since dividing integers in C# returns a floored value.
+
+
+```csharp
+public static string Choose( float choiceValue, List<(int weight, string itemName)> lootTable )
+{
+  if ( lootTable.Count == 0 )
+    return string.Empty;
+
+  if ( lootTable.Count == 1 )
+    return lootTable[ 0 ].itemName;
+
+  if ( choiceValue <= ( float )lootTable[ 0 ].weight / ( lootTable[ 0 ].weight + lootTable[ 1 ].weight ) )
+    return lootTable[ 0 ].itemName;
+
+  return lootTable[ 1 ].itemName;
+}
+```
+
+After running all the tests written so far and getting success, we can then refactor this much further, since we know we are always summing the entire loot table's weight.
+
+```csharp
+public static string Choose( float choiceValue, List<(int weight, string itemName)> lootTable )
+{
+  if ( lootTable.Count == 0 )
+    return string.Empty;
+
+  if ( lootTable.Count == 1 )
+    return lootTable[ 0 ].itemName;
+
+  int totalWeight = 0;
+  
+  foreach ( (int weight, string itemName) loot in lootTable )
+    totalWeight += loot.weight;
+
+  if ( choiceValue <= ( float )lootTable[ 0 ].weight / totalWeight )
+    return lootTable[ 0 ].itemName;
+
+  return lootTable[ 1 ].itemName;
+}
+```
+
+The usual, Run test, still success. Now you can see that the line where we check `lootTable.Count == 1`, can be converted into the same logic below where the choiceValue is in the range of 0 ~ 1 (since we only have one single loot in the lootTable)
+
+```csharp
+if ( choiceValue <= ( float )lootTable[ 0 ].weight / totalWeight ) // ( lootTable.Count == 1 )
+  return lootTable[ 0 ].itemName;
+```
+
+And you can see... It is simply the same logic as below! So it's counted as a duplication, so let's remove that.
+
+```csharp
+public static string Choose( float choiceValue, List<(int weight, string itemName)> lootTable )
+{
+  if ( lootTable.Count == 0 )
+    return string.Empty;
+
+  int totalWeight = 0;
+
+  foreach ( (int weight, string itemName) loot in lootTable )
+    totalWeight += loot.weight;
+
+  if ( choiceValue <= ( float )lootTable[ 0 ].weight / totalWeight )
+    return lootTable[ 0 ].itemName;
+
+  return lootTable[ 1 ].itemName;
+}
+```
+
+Run Test, Succeed.
+
+### Fourth and Last Test
+Now let's move on to the fourth test, this time, let's have 3 items to choose from.
+```csharp
+[Test]
+public void TestThreeItems()
+{
+  TestChoice
+  (
+    0.5f,
+    new List<(int weight, string itemName)>
+    {
+      ( 10, "Circle" ), // probability: 10/35 -> 0.286 <=> range: 0 ~ 0.286
+      ( 20, "Triangle" ), // probability: 20/35 -> 0.571 <=> range: 0.286 ~ (0.286 + 0.571) = 0.857
+      ( 5, "Box" ) // probability: 5/35 -> 0.143 <=> range: 0.857 ~ (0.857 + 0.143) = 1
+    },
+    "Triangle"
+  );
+}
+```
+
+As usual, let's run the test. But wait... We should expect failure isn't it? But checking the test, there's nothing wrong.
+In this case, our implementation is able to support until 2 elements in the list, so it can select the Triangle.
+
+But when we do TDD, each step is at least doing incremental progress on the implementation, so instead, we can make it select the third element in the list, and that will drive our implementation a bit further.
+
+```csharp
+[Test]
+public void TestThreeItems()
+{
+  TestChoice
+  (
+    0.9f,
+    new List<(int weight, string itemName)>
+    {
+      ( 10, "Circle" ), // probability: 10/35 -> 0.286 <=> range: 0 ~ 0.286
+      ( 20, "Triangle" ), // probability: 20/35 -> 0.571 <=> range: 0.286 ~ (0.286 + 0.571) = 0.857
+      ( 5, "Box" ) // probability: 5/35 -> 0.143 <=> range: 0.857 ~ (0.857 + 0.143) = 1
+    },
+    "Box"
+  );
+}
+```
+
+Running the test should fail now.
+
+Let's get it run by our usual tactic, happy little if statements~ (Thanks Bob Ross!)
+
+```csharp
+public static string Choose( float choiceValue, List<(int weight, string itemName)> lootTable )
+{
+  if ( lootTable.Count == 0 )
+    return string.Empty;
+
+  int totalWeight = 0;
+
+  foreach ( (int weight, string itemName) loot in lootTable )
+    totalWeight += loot.weight;
+
+  if ( choiceValue <= ( float )lootTable[ 0 ].weight / totalWeight )
+    return lootTable[ 0 ].itemName;
+
+  // Checks from the range 30/35 ~ 35/35 for the second item
+  if ( choiceValue <= ( float )( 10 + 20 ) / totalWeight )
+    return lootTable[ 1 ].itemName;
+
+  return lootTable[ 2 ].itemName;
+}
+```
+
+Run and getting tests green, we can then proceed to replace the constants into variables again.
+
+Replacing (10 + 20) with the `lootTable[0].weight` and `lootTable[1].weight`
+
+```csharp
+// Checks from the range 30/35 ~ 35/35
+if ( choiceValue <= ( float )( lootTable[ 0 ].weight + lootTable[ 1 ].weight ) / totalWeight )
+  return lootTable[ 1 ].itemName;
+```
+
+Then if we observe more closely, especially these following lines:
+
+```csharp
+if ( choiceValue <= ( float )lootTable[ 0 ].weight / totalWeight )
+  return lootTable[ 0 ].itemName;
+
+// Checks from the range 30/35 ~ 35/35
+if ( choiceValue <= ( float )( lootTable[ 0 ].weight + lootTable[ 1 ].weight ) / totalWeight )
+  return lootTable[ 1 ].itemName;
+```
+
+We can see a common pattern here, where we search through all the weights, and compare whether or not it is in the given range.
+
+```csharp
+int currentMaxWeight = lootTable[ 0 ].weight;
+if ( choiceValue <= ( float )currentMaxWeight / totalWeight )
+  return lootTable[ 0 ].itemName;
+
+// Checks from the range 30/35 ~ 35/35
+currentMaxWeight += lootTable[ 1 ].weight;
+if ( choiceValue <= ( float )currentMaxWeight / totalWeight )
+  return lootTable[ 1 ].itemName;
+```
+
+When we extracted this logic out, we can obviously see the if statements below are very similar, the difference is just merely index, so let's try to extract that as well.
+(Do note here I will be running tests and ensure I am still in the right track)
+
+```csharp
+int currentMaxWeight = lootTable[ 0 ].weight;
+int index = 0;
+if ( choiceValue <= ( float )currentMaxWeight / totalWeight )
+  return lootTable[ index ].itemName;
+
+// Checks from the range 30/35 ~ 35/35
+currentMaxWeight += lootTable[ 1 ].weight;
+index += 1;
+if ( choiceValue <= ( float )currentMaxWeight / totalWeight )
+  return lootTable[ index ].itemName;
+```
+
+And easily, we can see there's a duplication in the if statements, and there's an incrementing index, so turn that into a for loop!
+
+```csharp
+int currentMaxWeight = 0;
+
+for ( int index = 0; index < lootTable.Count; index++ )
+{
+  currentMaxWeight += lootTable[ index ].weight;
+
+  if ( choiceValue <= ( float )currentMaxWeight / totalWeight )
+    return lootTable[ index ].itemName;
+}
+```
+
+And since, in the for loop, we are only accessing the current element, isn't that just a foreach loop? let's change that as well!
+
+```csharp
+public static string Choose( float choiceValue, List<(int weight, string itemName)> lootTable )
+{
+  if ( lootTable.Count == 0 )
+    return string.Empty;
+
+  int totalWeight = 0;
+
+  foreach ( (int weight, string itemName) loot in lootTable )
+    totalWeight += loot.weight;
+
+  int currentMaxWeight = 0;
+
+  foreach ( (int weight, string itemName) loot in lootTable )
+  {
+    currentMaxWeight += loot.weight;
+
+    if ( choiceValue <= ( float )currentMaxWeight / totalWeight )
+      return loot.itemName;
+  }
+
+  return lootTable[ 2 ].itemName;
+}
+```
+
+finally, did you realize, this is already the actual algorithm? except, we should remove the last return value and tell it to react to an error, since it is not expected to be out of the foreach loop. In C#, we would throw an `ArgumentException`
+
+
+```csharp
+public static string Choose( float choiceValue, List<(int weight, string itemName)> lootTable )
+{
+  if ( lootTable.Count == 0 )
+    return string.Empty;
+
+  int totalWeight = 0;
+
+  foreach ( (int weight, string itemName) loot in lootTable )
+    totalWeight += loot.weight;
+
+  int currentMaxWeight = 0;
+
+  foreach ( (int weight, string itemName) loot in lootTable )
+  {
+    currentMaxWeight += loot.weight;
+
+    if ( choiceValue <= ( float )currentMaxWeight / totalWeight )
+      return loot.itemName;
+  }
+
+  throw new ArgumentException();
+}
+```
+
+And Bam! Run the tests one last time, and there we have it. A `LootSystem` that chooses a single item from the loot Table based on the loot's weights!
+
+Of course, we can end this by extracting `(int weight, string itemName)` into it's own stucture / class, but I won't be doing that here.
+
+After all that, I hope you can see how TDD can help design, and sometimes help you derive our a better way on writing an algorithm / system!
+
+Even though it seems that TDD is really smooth along the way, but that isn't always the case, I won't go into detail in this blog since it's already very long.
+
+So I will just show some Pros and Cons I have discovered while using TDD.
+
 
 # Pros
 - It can remove the fear of changing, refactoring and deleting code, Since you know a lot of tests backs the code up.
@@ -415,3 +716,6 @@ so as you can see, I only changed the choice Value,
 - The real benefits of TDD only comes at a pretty late stage of development
 - The time and effort of using TDD is quite high compared to immediately write code and test it right after
 - Some systems aren't easily / near impossible to test and mock, examples are such like: Simulations, Randomness and or multi-threading. (although if systems are designed with decoupling in mind, these could still be potentially tested, it all depends on the design of the system)
+
+
+Have fun and stay tuned for the next blog, Cheers!
