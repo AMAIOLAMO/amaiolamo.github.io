@@ -65,7 +65,7 @@ I will be using C# for the following examples, but it should apply to other obje
 
 For the Test Framework, I will be using NUnit
 
-# Example 1 - Looting System
+# TDD - Looting System
 
 Given the following requirements:
 > Write a `Looting System` in which has a single procedure: `RandChoose` that, upon given a loot table with weights and item names, will return a random loot in the table, given the weight.
@@ -204,9 +204,205 @@ public static string RandChoose( List<(int weight, string itemName)> lootTable )
 }
 ```
 
-now this should still work, let's see if there's any other duplication
+Moving onto the third test, which will change a lot of things later on.
 
+```csharp
+[Test]
+public void TestTwoItems()
+{
+  string result = LootSystem.RandChoose
+  (
+    new List<(int weight, string itemName)>
+    {
+      ( 6, "Stone" ),
+      ( 1, "Sand" )
+    }
+  );
+  string expected = ???; // how do we expect a randomized value?
 
+  Assert.That( result, Is.EqualTo( expected ) );
+}
+```
+
+Now, while writing the third test, you can immediately see one problem. We cannot simply test randomization!
+
+So that must mean our design has some flaws, rendering it to be not testable. Thus, before we continue onwards, we should have another updated design discussion again.
+
+Our problem here is the test (user side) cannot determine the output of `RandChoose`, but we also do not want to expose the contents of **LootSystem**.
+
+So instead, we could redesign the request to allow the input to also predict what the Choosing Method can handle.
+
+In our situation, `RandChoose` can receive another argument, that argument can be used to determine the output, although now, the randomization is given to the user to determine!
+
+That makes the system more modular, as now the user can have customization on how to handle the determining factor of randomization, instead of the `LootSystem` handling this.
+
+So before we continue, we know that our design is flawed, we should comment out the third test, because we cannot simply make it compile easily in the first step.
+
+```csharp
+public static string RandChoose( float choiceValue, List<(int weight, string itemName)> lootTable )
+```
+
+And since, RandChoose isn't really `Random` anymore, we can safely remove the `Rand` prefix in the name of the method
+
+```csharp
+public static string Choose( float choiceValue, List<(int weight, string itemName)> lootTable )
+```
+
+Now, our older tests are shouting to be fixed, so let's fix them quickly.
+
+```csharp
+[Test]
+public void TestEmpty()
+{
+  string result = LootSystem.Choose( 0f, new List<(int weight, string itemName)>() );
+  string expected = string.Empty;
+
+  Assert.That( result, Is.EqualTo( expected ) );
+}
+```
+
+```csharp
+[Test]
+public void TestOneItem()
+{
+  string result = LootSystem.Choose
+  (
+    0f,
+    new List<(int weight, string itemName)>
+    {
+     ( 10, "Stone" )
+    }
+  );
+  string expected = "Stone";
+
+  Assert.That( result, Is.EqualTo( expected ) );
+}
+```
+
+Now after getting success from the tests, we can continue to uncomment the third test, and write down the functionality we wanted.
+
+```csharp
+[Test]
+public void TestTwoItems()
+{
+  // stone is 0 ~ 0.857, but the choice Value is 0.88f, so it should be in the range of Sand, which is
+  // (0.857 ~ 1)
+  string result = LootSystem.Choose
+  (
+    0.88f,
+    new List<(int weight, string itemName)>
+    {
+      ( 6, "Stone" ), // probability: 6/7 -> 0.857 <=> range: 85.7% -> 0 ~ 0.857
+      ( 1, "Sand" )   // probability: 1/7 -> 0.143 <=> range: 14.3% -> 0.857 ~ (0.857 + 0.143) = 1
+    }
+  );
+  
+  string expected = "Sand";
+
+  Assert.That( result, Is.EqualTo( expected ) );
+}
+```
+
+So to be more clear, I wrote some more exact situation on how we would want to expect the `Choose` to should function given the `choiceValue`
+
+Running the test and expecting a failure, let's continue converting it into an if statement
+
+```csharp
+public static string Choose( float choiceValue, List<(int weight, string itemName)> lootTable )
+{
+  if ( lootTable.Count == 0 )
+    return string.Empty;
+
+  if ( lootTable.Count == 1 )
+    return lootTable[ 0 ].itemName;
+
+  return "Sand";
+}
+```
+
+Running the test, we have passed... Now onto removing duplication. Here you can see that "Sand" is an obvious duplication between implementation and the test, we can change it to be more generalized by using `lootTable[1].itemName`.
+
+```csharp
+if ( lootTable.Count == 1 )
+  return lootTable[ 0 ].itemName;
+
+return lootTable[ 1 ].itemName;
+```
+
+After making sure the test pass. Another duplication still exist, but where is it? A duplication exist in tests, where we always test a result and an expected variable through the `Choice` method.
+
+```csharp
+void TestChoice( float choiceValue, List<(int weight, string itemName)> lootTable, string expected )
+{
+  string result = LootSystem.Choose( choiceValue, lootTable );
+  Assert.That( result, Is.EqualTo( expected ) );
+}
+```
+
+then replacing all the tests using this newly extracted method inside the tests.
+
+```csharp
+[Test]
+public void TestEmpty()
+{
+  TestChoice( 1f, new List<(int weight, string itemName)>(), string.Empty );
+}
+
+[Test]
+public void TestOneItem()
+{
+  TestChoice
+  (
+    0f,
+    new List<(int weight, string itemName)>
+    {
+      ( 10, "Stone" )
+    },
+    "Stone"
+  );
+}
+
+[Test]
+public void TestTwoItems()
+{
+  // stone is 0 ~ 0.857, but the choice Value is 0.88f, so it should be in the range of Sand, which is
+  // (0.857 ~ 1)
+  TestChoice
+  (
+    0.88f,
+    new List<(int weight, string itemName)>
+    {
+      ( 6, "Stone" ), // probability: 6/7 -> 0.857 <=> range: 85.7% -> 0 ~ 0.857
+      ( 1, "Sand" ) // probability: 1/7 -> 0.143 <=> range: 14.3% -> 0.857 ~ (0.857 + 0.143) = 1
+    },
+    "Sand"
+  );
+}
+```
+Running the test to make sure it's still green bar.
+
+Then here's the interesting part. There's still more to generalize / remove duplication in this case. But how do we do that?
+If you still cannot see it, we can continue to write another test, it will be similar to the third case, but slightly altered.
+
+```csharp
+[Test]
+public void TestTwoItems2()
+{
+  // stone is 0 ~ 0.857, in which the choice value is within, so it should choose stone
+  TestChoice
+  (
+    0.1f,
+    new List<(int weight, string itemName)>
+    {
+      ( 6, "Stone" ), // probability: 6/7 -> 0.857 <=> range: 85.7% -> 0 ~ 0.857
+      ( 1, "Sand" ) // probability: 1/7 -> 0.143 <=> range: 14.3% -> 0.857 ~ (0.857 + 0.143) = 1
+    },
+    "Stone"
+  );
+}
+```
+
+so as you can see, I only changed the choice Value, 
 
 # Pros
 - It can remove the fear of changing, refactoring and deleting code, Since you know a lot of tests backs the code up.
