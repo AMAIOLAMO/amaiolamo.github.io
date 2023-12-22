@@ -55,28 +55,28 @@ According to the book Test-Driven Development By Example, these are the basic rh
 5. Refactor to remove duplication
 
 Which, in other words, basically boils down to:
-1. Write Tests
+1. Write small Tests that moves you forward a little bit
 2. Expect Failure
 3. Change in DIRTY Baby steps
 4. Expect Succeeed
 5. Refactor duplication and dirtyness
-6. Move on / Rinse and Repeat
+6. Move on to the next test / Rinse and Repeat
 
 Red-Green-Refactor is another motto to understand this certain flow,
 Where Red means fail, Green means making it succeed, then the important Refactor~
 
-The heart and core of TDD is to do things **quickly**, and in **small enough increments**, and at the same time, making sure the code quality is maintained, and also making sure that everything is under control (of course, there are still situations where control is hard or near impossible to have)
+The heart and core of TDD is to do things **quickly**, and in **small enough increments**, and at the same time, making sure the code quality is maintained, and also making sure that everything is under control (of course, there are still situations where control is hard or near impossible to achieve)
 
-Let's have a few real world examples on how this could be potentially applied (there also would be counter examples, so fear not)
+Let's try to apply TDD in simple real world example to get a grip on how this could be potentially applied (fear not, I included counter situations where it goes into detail on what you could do in those situations)
 
-I will be using C# for the following examples, but it should apply to other object-oriented languages as well! (maybe also functional languages perhaps?)
+I will be using C# for the following examples, but it should apply to other object-oriented languages as well! (functional languages perhaps?)
 
 For the Test Framework, I will be using NUnit
 
 # TDD - Looting System
 
 Given the following requirements:
-> Write a `Looting System` in which has a single procedure: `RandChoose` that, upon given a loot table with weights and item names, will return a random loot in the table, given the weight.
+> Write a `Looting System` in which has a single procedure: `RandChoose` that, upon given a loot table with weights and item names, will return a random loot in the table.
 
 > The higher the weight is, the higher the probability that it will be chosen among all loot in the loot table.
 
@@ -153,9 +153,9 @@ Alright, you ask: "where is the duplication?", "we only have a single string.Emp
 
 Wait wait wait, now, hold there, look at where string.Empty occured... Yes~ It occurred both in the Test and in the implementation!
 
-So to remove such duplication, what we usually do is to "generalize"(there's whole another topic around this, I will discuss it in another post). We can start thinking where does this `string.Empty` comes from?
+So to remove such duplication, what we usually do is to "generalize"(there's a whole another topic around this, I will discuss it in another post). We can start thinking where does this `string.Empty` comes from? It doesn't really come from the input, but rather is an exceptional case.
 
-It is an exceptional case! So right now, without other tests to help, we can't really generalize up, So let's not remove this duplication.. just yet :D
+So right now, without other tests to help, we can't really see / know yet how to generalize this up. Let's continue onwards.
 
 ### Second Test
 let's move onto test 2
