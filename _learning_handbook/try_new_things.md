@@ -1,6 +1,6 @@
 ---
 layout: doc
-title: Mental Misconceptions
+title: Try New Things
 ---
 
 
