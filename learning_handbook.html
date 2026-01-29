@@ -7,13 +7,18 @@ published: true
 
 <article class="learning_handbook">
 
-    <div class="posts">
-      {% for post in site.learning_handbook %}
-        <article class="post">
+  {% for post in site.learning_handbook %}
+    <article class="post">
 
-          <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
-      {% endfor %}
-    </div>
+      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+
+      <div class="entry" style="text-align: center;">
+        {{ post.excerpt }}
+      </div>
+
+      <a href="{{ site.baseurl }}{{ post.url }}" class="continue">More</a>
+    </article>
+  {% endfor %}
 
   <h3 style="text-align: center;">All Things Related To learning handbook will be here :)</h3>
 

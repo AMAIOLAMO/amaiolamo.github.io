@@ -50,7 +50,8 @@ url: amaiolamo.github.io
 baseurl: ""
 
 collections:
-  - learning_handbook
+  learning_handbook:
+    output: true
 
 #
 # !! You don't need to change any of the configuration flags below !!
