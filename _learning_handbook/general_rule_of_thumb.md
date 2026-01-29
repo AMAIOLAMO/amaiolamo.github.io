@@ -7,19 +7,19 @@ title: General Rule Of Thumb
 - 5% of time for theoretical knowledge, 95% of time for practice
 
 #### *Practice test*
-![](vendor/test.png)
+![](/images/expressions/test.png)
 - If you cant solve the same problem twice, u don't know it well enough.
 
 #### *Feynmann's method*
-![](vendor/talk.png)
+![](/images/expressions/talk.png)
 - If you cant explain it simply to someone else with no prior knowledge, you don't know it well enough.
 
 #### *Be brave*
-![](vendor/happi.png)
+![](/images/expressions/happi.png)
 - brave enough to embrace that you suck. Embrace the shit that you have to get through, embrace the people who might judge you for it.
 
 #### Active Recall
-![](vendor/think_hard.png)
+![](/images/expressions/think_hard.png)
 - *Recall* is extremely important, you don't learn through just cheesing and lying to yourself, you have to make yourself feel pain, take time to really recall. Often do self tests as an actual way of measuring your current skill and knowledge.
 - Active recall is different than Passive recall, active is that you "force" your knowledge to be pulled out your brain, even if it's not easy.
 
