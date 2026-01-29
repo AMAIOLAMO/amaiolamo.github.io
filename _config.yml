@@ -3,10 +3,10 @@
 #
 
 # Name of your site (displayed in the header)
-name: CxRedix
+name: Redix Compendium
 
 # Short bio or description (displayed in the header)
-description: I make or try fun and interesting stuff
+description: I do Fun and Interesting Stuff
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: https://raw.githubusercontent.com/AMAIOLAMO/amaiolamo.github.io/master/images/profile_imagex100.png
@@ -48,6 +48,9 @@ url: amaiolamo.github.io
 # and NOT your User repository (http://yourusername.github.io)
 # then add in the baseurl here, like this: "/repository-name"
 baseurl: ""
+
+collections:
+  - learning_handbook
 
 #
 # !! You don't need to change any of the configuration flags below !!
