@@ -4,7 +4,7 @@ title: Introduction to x86_64 linux assembly part 2 (nasm) (GNU/linux)
 ---
 
 ## Introduction
-As explained in the last [blog](2025-8-16-Linux_x86-64-Assembly-Part1.md) we have made our very own first x86_64 linux assembly executable! It does not do much, that's why in this part, we will build off of what we have there!
+As explained in the last [blog](posts/2025/8/16/Linux_x86-64-Assembly-Part1.md) we have made our very own first x86_64 linux assembly executable! It does not do much, that's why in this part, we will build off of what we have there!
 
 ## The write syscall
 As you can see, this is the assembly code we have left from the previous part:
