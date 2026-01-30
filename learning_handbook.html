@@ -5,9 +5,7 @@ permalink: /learning_handbook
 published: true
 ---
 
-<article class="learning_handbook">
-
-    <p>{{ "*The more I learn, the less I know*.
+<p>{{ "*The more I learn, the less I know*.
 -- Random person from the internet
 
 Hello! This is my learning compendium / handbook. It serves as a heuristic guideline on what to do given a certain situation when you are learning.
@@ -17,10 +15,13 @@ Do note that this handbook does not go deep on how learning itself works, but ra
 You can start directly by answering this simple [[Troubleshoot Questionaire|Questionnaire]]!
 " | markdownify }}</p>
 
+<hr />
+
+<div class="posts">
     {% for post in site.learning_handbook %}
     <article class="post">
 
-        <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+        <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
 
         <div class="entry" style="text-align: center;">
             {{ post.excerpt }}
@@ -29,6 +30,4 @@ You can start directly by answering this simple [[Troubleshoot Questionaire|Ques
         <a href="{{ site.baseurl }}{{ post.url }}" class="continue">More</a>
     </article>
     {% endfor %}
-
-
-</article>
+</div>
