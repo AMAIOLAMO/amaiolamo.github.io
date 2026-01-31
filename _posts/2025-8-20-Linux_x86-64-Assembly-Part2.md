@@ -1,10 +1,11 @@
 ---
 layout: post
 title: Introduction to x86_64 linux assembly part 2 (nasm) (GNU/linux)
+tags: [assembly, linux]
 ---
 
 ## Introduction
-As explained in the last [blog](posts/2025/8/16/Linux_x86-64-Assembly-Part1.md) we have made our very own first x86_64 linux assembly executable! It does not do much, that's why in this part, we will build off of what we have there!
+As explained in the last [blog](/posts/2025/8/16/Linux_x86-64-Assembly-Part1) we have made our very own first x86_64 linux assembly executable! It does not do much, that's why in this part, we will build off of what we have there!
 
 ## The write syscall
 As you can see, this is the assembly code we have left from the previous part:
@@ -26,9 +27,12 @@ This program simply creates a 64-bit ELF executable and runs the `_start` label 
 
 Now let's try to use our `write` syscall shall we? Here is the call convention, and it's syscall arguments:
 
+
 | NR  | syscall name | rax | rdi             | rsi             | rdx          |
 
+
 | 1   | write        | 0x1 | unsigned int fd | const char *buf | size_t count |
+
 
 The `rax` register stores the syscall's NR, the `rdi` register stores the [file descriptors](https://en.wikipedia.org/wiki/File_descriptor), which in short, they are the standard I/O pipes, the stdin(0), stdout(1) and stderr(2). Here we will of course "write" to the stdout I/O file descriptor, so we will load the value 1 to the register `rdi`. `rsi` receives a character buffer, similar to a [C string](https://www.geeksforgeeks.org/c/strings-in-c/) it will write the contents of the buffer to the output of our choice. Finally, count refers to the amount of bytes / characters to use from the buffer. In this case, it should be the length of our message!
 

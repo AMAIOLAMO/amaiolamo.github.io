@@ -15,14 +15,14 @@ One of the idea that stuck with me is this:
 So this part of learning handbook will be dedicated to some of his "learning theory" that was derived directly from "Machine learning theory".
 
 #### Learning and Memorization
-  > **Learning** is the act of internalizing some rule into the mind, so that you can solve future "unknown problems", albeit not entirely accurate to reality.
+> **Learning** is the act of internalizing some rule into the mind, so that you can solve future "unknown problems", albeit not entirely accurate to reality.
 
 
 Examples:
 1. You learnt a new theorem in mathematics, you not only remembered the formula, but also understood what every part of it means, or at least what form of the equation it needs to feel like. Then you proceeded to use it in a new problem that you have never seen before.
 2. You studied a new technique in planting plants, you decided to use it in a new plant you bought home.
 
-  > **Memorization** is the act of storing static knowledge, so that you can recall the same knowledge in the future.
+> **Memorization** is the act of storing static knowledge, so that you can recall the same knowledge in the future.
 
 
 Examples:
@@ -35,5 +35,10 @@ Examples:
 
 
 #### Knowledge and Information
+> **Knowledge** is the association of some input to some output. In otherwords, it allows you to have some information and use this information to predict some other thing.
+
+Examples:
+1. The sun always rises everyday. (input is date, output is whether or not sun rises)
+
 
 *This area is under construction :), stay tuned*

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Introduction to x86_64 linux assembly part 1 (nasm) (GNU/linux)
+tags: [assembly, linux]
 ---
 
 # Introduction 

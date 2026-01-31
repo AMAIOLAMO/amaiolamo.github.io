@@ -30,3 +30,5 @@ That is exactly how learning works as well, you have an educated guess -> try it
 
 Of course, there are still situations where you have: [False positives(incorrectly right), and false negatives(incorrectly wrong)](https://en.wikipedia.org/wiki/False_positives_and_false_negatives) which just means your experiment is lacking something that can actually "test" your guess :)
 
+
+
