@@ -29,16 +29,6 @@ title: General Rule Of Thumb
 
 ![](/images/embeds/energy_worktime_graph.png)
 
-
-#### Differentiate between Memorization and Learning
-  - *Learning* is the act of internalizing some rule into the mind, so that you can solve future "unknown problems". Such as theorems in math.
-
-  - *Memorization* is the act of storing static knowledge, so that you can recall the same knowledge in the future. Such as historical year associated with events during that time.
-
-
-> NOTE:
-> Both *Memorization* and *Learning* are important, best case scenario is balance both depending on the thing you are learning.
-
 #### Creative thinking
 - Creativity is important in problem solving as well as real life solutions. Think out of the box, do something different than others. Choose this when needed.
 - Try to IGNORE taboos, rules, and go out your way like a delinquent! (But don't really actually do the things delinquents do :P, rather think outside the regular boundaries)
