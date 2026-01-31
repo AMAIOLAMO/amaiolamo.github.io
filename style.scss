@@ -122,10 +122,32 @@ img {
     max-width: none;
 }
 
+.post_metadata {
+    font-style: italic;
+    color: $color-metadata-content;
+    text-align: center;
+}
+
+.tags_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.tag_content {
+    font-style: bold;
+    border-radius: 5px;
+    border: 2px solid $color-metadata-content;
+    padding: 4px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
 .date {
     font-style: italic;
-color: $color-date-content;
-       text-align: center;
+    color: $color-date-content;
+    text-align: right;
 }
 
 // Specify the color of the selection
@@ -283,6 +305,8 @@ color: $color-blockquote-content;
     .continue {
         text-transform: uppercase;
         font-size: 15px;
+        display: block;
+        text-align: right;
     }
 }
 
