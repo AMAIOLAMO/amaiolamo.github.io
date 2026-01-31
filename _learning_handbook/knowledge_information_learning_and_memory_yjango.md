@@ -16,14 +16,18 @@ So this part of learning handbook will be dedicated to some of his "learning the
 
 #### Learning and Memorization
   > **Learning** is the act of internalizing some rule into the mind, so that you can solve future "unknown problems", albeit not entirely accurate to reality.
-  Examples:
-  1. You learnt a new theorem in mathematics, you not only remembered the formula, but also understood what every part of it means, or at least what form of the equation it needs to feel like. Then you proceeded to use it in a new problem that you have never seen before.
-  2. You studied a new technique in planting plants, you decided to use it in a new plant you bought home.
+
+
+Examples:
+1. You learnt a new theorem in mathematics, you not only remembered the formula, but also understood what every part of it means, or at least what form of the equation it needs to feel like. Then you proceeded to use it in a new problem that you have never seen before.
+2. You studied a new technique in planting plants, you decided to use it in a new plant you bought home.
 
   > **Memorization** is the act of storing static knowledge, so that you can recall the same knowledge in the future.
-  Examples:
-  1. Your history teacher taught a new topic about a historical event, you decided to memorize the historical year associated with events during that time, and during the exam, you recalled it and wrote exactly that.
-  2. You recalled in the past, you have seen this animal before, and you decided to explain your experienced during that time to a friend.
+
+
+Examples:
+1. Your history teacher taught a new topic about a historical event, you decided to memorize the historical year associated with events during that time, and during the exam, you recalled it and wrote exactly that.
+2. You recalled in the past, you have seen this animal before, and you decided to explain your experienced during that time to a friend.
 
 
 > NOTE:
