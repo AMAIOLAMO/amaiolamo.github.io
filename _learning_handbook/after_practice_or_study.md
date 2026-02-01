@@ -1,5 +1,5 @@
 ---
-layout: doc
+layout: page
 title: After Practice or Study
 ---
 

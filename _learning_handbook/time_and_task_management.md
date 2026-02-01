@@ -1,5 +1,5 @@
 ---
-layout: doc
+layout: page
 title: Time & Task Management
 ---
 

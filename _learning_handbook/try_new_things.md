@@ -1,5 +1,5 @@
 ---
-layout: doc
+layout: page
 title: Try New Things
 ---
 

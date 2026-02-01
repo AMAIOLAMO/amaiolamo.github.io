@@ -1,5 +1,5 @@
 ---
-layout: doc
+layout: page
 title: Knowledge, Information, Learning And Memorizing (YJango)
 ---
 
