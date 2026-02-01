@@ -15,6 +15,7 @@ One of the idea that stuck with me is this:
 So this part of learning handbook will be dedicated to some of his "learning theory" that was derived directly from "Machine learning theory".
 
 #### Learning and Memorization
+![](/images/expressions/brain.png)
 > **Learning** is the act of internalizing some rule into the mind, so that you can solve future "unknown problems", albeit not entirely accurate to reality.
 
 
@@ -40,5 +41,21 @@ Examples:
 Examples:
 1. The sun always rises everyday. (input is date, output is whether or not sun rises)
 
+> **Information** are just descriptions of something. They can be a fact, or simply just a description.
 
-*This area is under construction :), stay tuned*
+Examples:
+1. In history, your teacher told you to recall a past significant event in history.
+2. You need to rememeber today 20 things to buy from your grocery list.
+
+
+> NOTE:
+> A common misconception between knowledge and information is if you think about formulas. It is easy to memorize formulas, but not understand them, that is in fact memorizing "information", but not learning "knowledge". As you internalized NOT a rule, but a fact.
+
+#### Combination of all
+If you haven't already noticed, learning is extremely similar to knowledge, Memorization is pretty close to information! If you thought of this, congratulations!
+
+Because actually, learning is defined as the aquisition and internalization of knowledge, and memorization is the ability to recall static information from your mind.
+
+Of course, you could also merge all of them, such as memorizing multiple historical events and realizing there is a common "rule" between all of these, then you technically learnt a knowledge.
+
+
