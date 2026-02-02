@@ -3,6 +3,7 @@ layout: page
 title: Techniques
 ---
 
+
 This page shares a collection of techniques that may serve useful for your learning endeavours.
 Majority of the things here will be categorized based on the "major" use of the technique.
 
@@ -10,9 +11,12 @@ Majority of the things here will be categorized based on the "major" use of the 
 NOTE: Certain techniques actually can be used in multiple different areas, so take the categories themselves as a grain of salt :P.
 Just focus on the technique themselves :D.
 
+WARNING: This page is currently incomplete, all links will be slowly added in the future :)
+
 
 #### Learning, Comprehending & Understanding
  - Prediction Method
+ - Self-Questioning Technique
 
 
 #### Memorization
