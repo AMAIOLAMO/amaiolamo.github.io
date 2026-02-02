@@ -96,3 +96,6 @@ Try things out; Measure your efficiency; Observe your mental & physical state be
 but can actually be extremely useful if asked the right question.
 Each question asked is a potential new perspective opened to you(granted that you are willing to listen to such perspective),
 some intricate idea you have never thought of, or that "click" in your mind that you have been searching for in a long time.
+
+Related Articles:
+[Research on the Impact of Student Questions on Learning](https://rightquestion.org/resources/research-on-the-impact-of-student-questions-on-learning/)
