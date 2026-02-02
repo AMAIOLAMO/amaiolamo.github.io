@@ -17,6 +17,7 @@ WARNING: This page is currently incomplete, all links will be slowly added in th
 #### Learning, Comprehending & Understanding
  - Prediction Method
  - Self-Questioning Technique
+ - [Question Formulation Technique(QFT)](https://sites.lsa.umich.edu/equitable-teaching/wp-content/uploads/sites/853/2020/09/Question-Formulation-Technique-Draft-3.pdf)
 
 
 #### Memorization
