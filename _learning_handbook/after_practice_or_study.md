@@ -3,6 +3,8 @@ layout: page
 title: After Practice or Study
 ---
 
+Sometimes after your study / practice session, you may wonder what to do... This page serves as a list of things you can do during those situations :)
+
 #### Constant Reflection
 ![](/images/expressions/think_question.png)
 - Constant reflection after practice and theoretical study. 
