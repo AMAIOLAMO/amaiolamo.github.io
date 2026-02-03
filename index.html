@@ -2,11 +2,16 @@
 layout: default
 ---
 
+<p style="text-align: center;">Welcome to my little site!</p>
+<p style="text-align: center;">I'm CxRedix, I do random stuff :)</p>
+
+<h1>Blogs</h1>
+
 <div class="posts">
     {% for post in site.posts %}
     <article class="post">
 
-        <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+        <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
 
         <div style="text-align: center;">
             {% if post.tags and post.tags.size > 0 %}
