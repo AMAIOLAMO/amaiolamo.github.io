@@ -9,6 +9,7 @@ Sometimes after your study / practice session, you may wonder what to do... This
 ![](/images/expressions/think_question.png)
 - Constant reflection after practice and theoretical study. 
 - Write down what you feel confused, and what you don't know. Really. **WRITE IT DOWN**. knowledge is intricate, and it's easy to overlook the more smallest detail, when in fact, those smallest detail are the most important ones / the ones you are missing.
+- Check out [this](/learning_handbook/experimentation_while_learning) to see how to experiment while learning.
 
 Utilizing the things you wrote down during your reflection, plan for your next action.
 
@@ -22,4 +23,8 @@ Utilizing the things you wrote down during your reflection, plan for your next a
   Another example would be to try to teach someone (similar to feynmann's method), when you teach someone the thing you are learning, especially when the other really has no idea what the subject it is about, you will quickly see what are the things you may miss, and what you can improve upon in your undestanding. Rinse and repeat.
 
 #### What to do When Stuck?
-Incubation period: Do something else, maybe your current knowledge is not sufficient enough for you to fully get the entire thing. Or maybe your mind is too LAZER focused on one area, and actually missed out the actual solution. Take a break, REALLY put your mind off, and STOP thinking about it for a while.
+![](/images/expressions/egg_question.png)
+
+Incubation period: Do something else, maybe your current knowledge is not sufficient enough for you to fully get the entire image of what you are learning.
+Or maybe your mind is too "lazer focused" on one area, and missed out on the actual solution. Take a break, REALLY.
+Put your mind off, and STOP thinking about it for a while.

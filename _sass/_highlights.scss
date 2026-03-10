@@ -1,17 +1,15 @@
+@import "vendor/fonts/fira_code/fira_code.css";
 
 .highlight {
   background-color: #1b1d26;
-  padding: 3px 3px 3px 3px;
-  border: 1px solid #ddd;
-  // -moz-box-shadow: 3px 3px rgba(0,0,0,0.1);
-  // -webkit-box-shadow: 3px 3px rgba(0,0,0,0.1);
-  // box-shadow: 3px 3px rgba(0,0,0,0.1);
-  margin: 20px 0 20px 0;
+  padding: .4rem;
+  border-radius: .3rem;
   overflow: scroll;
 }
 
 code {
-  font-family:'Bitstream Vera Sans Mono','Courier', monospace;
+  font-family: 'Fira Code', 'Bitstream Vera Sans Mono','Courier', monospace;
+  font-size: 0.85rem;
 }
 
 .highlight .c { color: #586E75 } /* Comment */

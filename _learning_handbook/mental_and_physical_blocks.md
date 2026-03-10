@@ -8,6 +8,8 @@ title: Mental And Physical Blocks
 
 - Create feasible goals, don't mentally goal creep(scope creep). Similar to controlling Feasibility Bias.
 
+- This idea came from [Colin Galen](https://www.youtube.com/watch?v=rO4bKiyZXZw) a top competitive programmer.
+
 #### Rest.
 Take breaks, get good sleep, eat well, don't compare with others, exercise, hydrate often, and have fun, chat with people. Life is not all about improvement and performance only.
 
@@ -22,14 +24,22 @@ According to [wikipedia](https://en.wikipedia.org/wiki/Executive_functions),
 > "executive functions (collectively referred to as executive function and cognitive control) are a set of cognitive processes that support goal-directed behavior, by regulating thoughts and actions through cognitive control, selecting and successfully monitoring actions that facilitate the attainment of chosen objectives."
 
 You can utilize this word to remember all the types of executive functions!
+
 POSITIVE:
 P - Planning
+
 O - Organization
+
 S - Self-Management
+
 I - Inhibition
+
 T - Time Management
+
 I - Initiation (of difficult tasks)
+
 V - Visualize (non working memory)
+
 E - Evaluate (priorities)
 
 
