@@ -20,6 +20,14 @@ WARNING: This page is currently incomplete, all links will be slowly added in th
  Generate your own prediction of what you believe the "correct answer" is, before revealing the actual correct answer to your self.
 </summary>
 
+<div markdown = 1>
+Prediction Method simply suggests one should try to "generate a correct answer(s)" before it was revealed.
+
+
+See:
+ - [Predicting as a learning strategy by Garvin Brod](https://pmc.ncbi.nlm.nih.gov/articles/PMC8642250/)
+</div>
+
 </details>
 
 <details>
@@ -53,9 +61,63 @@ Here are the steps that I have summarized from the video for the method:
 
 #### Memorization
 > General Memorization Techniques
- - Mnemonic Devices
- - Flash Cards
- - Knowledge Links
+<details>
+<summary><a href="https://en.wikipedia.org/wiki/Mnemonic">Mnemonic Devices</a>: An extremely general technique to memorize things by associating a concept to something you are already familar with.</summary>
+
+<div markdown = 1>
+This is very similar to the technique "Knowledge Links", here are a few common mnemonic devices:
+ - Music (Memorizing with some muic)
+ - Poems (Memorizing by constructing a poem)
+ - Words (Memorizing by constructing the list of things into words)
+
+
+An example of Words from wikipedia:
+```
+To memorize the metric prefixes after giga, think of the candy, and this mnemonic.
+
+"Tangiest Pez? Yellow!"
+
+TPEZY: tera, peta, exa, zetta, yotta.
+```
+</div>
+</details>
+
+<details>
+<summary><a href="https://en.wikipedia.org/wiki/Flashcard#Spaced_repetition">Flash Cards</a>: An Evidence-based technique that utilizes bunch of question & answer "Flash Cards" that forces you to recall</summary>
+
+<div markdown = 1>
+The most basic kind of flash cards involve creating a bunch of small pieces of card-sized paper, and writing questions at the front,
+answers at the back.
+
+And to memorize, you simply shuffle every flash card, and answer them one by one.
+This forces you to recall the contents of the question, which research suggests 
+
+
+Here are some [guidelines](https://www.takinglearningseriously.com/wp-content/uploads/2019/11/Flashcard-Guidelines.pdf) that may
+help you in more "efficiently" utilize flash cards in your advantage.
+
+There is a more advanced system called the "[Leitner System](https://en.wikipedia.org/wiki/Leitner_system)" that adds
+"[Spaced Repetition](https://en.wikipedia.org/wiki/Spaced_repetition)" into the equation. In short, it forces you to recall
+with a gap inbetween, and according to a [research](https://pmc.ncbi.nlm.nih.gov/articles/PMC5476736/) by Smith and Scarf(2017):
+flash cards help with children for learning both words and grammar; Adults on the other hand was not observed to have significant
+improvement for words and grammar, but rather it helps with learning or gaining of skills.
+
+It is also important to note from the research by Smith and Scarf(2017), and I quote:
+*"Space repeititions enhance the consolidation of memories to a greater extent than massed repetitions and providing time for memories to consolidate enhances the consolidation/reconsolidation of additional learning that can be fit into the same framework, resulting in faster learning and better retention."*
+
+</div>
+</details>
+
+
+
+<details>
+<summary>Knowledge Links: A technique that forces you to associate one or more familiar concepts to something you do not know.</summary>
+
+
+<div markdown = 1>
+UNDER CONSTRUCTION :P
+</div>
+</details>
 
 > For Short term memory (things like cramming tests / memorizing a one time use list of groceries)
  - Stories and Jokes

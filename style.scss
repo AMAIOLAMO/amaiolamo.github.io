@@ -72,8 +72,11 @@ p {
 
 a {
   color: $color-hover-link;
-  text-decoration: none;
   cursor: pointer;
+
+  text-decoration: none;
+  font-weight: bold;
+
   &:hover, &:active {
     color: $color-hover-link;
   }
