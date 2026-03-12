@@ -71,7 +71,7 @@ p {
 }
 
 a {
-  color: $color-hover-link;
+  color: $color-normal-link;
   cursor: pointer;
 
   text-decoration: none;
@@ -79,6 +79,7 @@ a {
 
   &:hover, &:active {
     color: $color-hover-link;
+    text-decoration: underline;
   }
 }
 
@@ -128,8 +129,23 @@ details {
 
   summary {
     font-size: 1.05rem;
+    font-weight: bold;
   }
 }
+
+details.callout p {
+  font-style: italic;
+}
+
+details.callout.note {
+  background: $color-callout-note;
+}
+
+
+details.callout.warn {
+  background: $color-callout-warn;
+}
+
 
 img {
   max-width: 100%;

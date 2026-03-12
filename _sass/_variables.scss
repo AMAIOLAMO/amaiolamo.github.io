@@ -4,7 +4,7 @@
 //
 
 // Colors
-$blue: #4183C4;
+$blue: #7bb4ed;
 
 // Grays
 $black: #000;
@@ -43,7 +43,8 @@ $color-post-border-bottom: $lightGray;
 
 
 // ==== common ====
-$color-hover-link: $blue;
+$color-normal-link: $blue;
+$color-hover-link: #edb266;
 
 $color-moz-selection-content: $dracula-white;
 $color-moz-selection-background: $dracula-white;
@@ -56,6 +57,10 @@ $color-h4-content: $dracula-dark-white;
 // ==== blockquotes ====
 $color-blockquote-border-left: $dracula-dark-white;
 $color-blockquote-content: $dracula-dark-white;
+
+// ==== callouts ====
+$color-callout-note: #4e74ad;
+$color-callout-warn: #8f723d;
 
 // ==== meta ====
 $color-date-content: $dracula-dark-white;

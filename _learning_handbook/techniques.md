@@ -7,11 +7,20 @@ title: Techniques
 This page shares a collection of techniques that may serve useful for your learning endeavours.
 Majority of the things here will be categorized based on the "major" use of the technique.
 
-
-NOTE: Certain techniques actually can be used in multiple different areas, so take the categories themselves as a grain of salt :P.
+<details class="callout note" open>
+<summary>NOTE</summary>
+<p>
+Certain techniques actually can be used in multiple different areas, so take the categories themselves as a grain of salt :P.
 Just focus on the technique themselves :D.
+</p>
+</details>
 
-WARNING: This page is currently incomplete, all links will be slowly added in the future :)
+<details class="callout warn" open>
+<summary>WARNING</summary>
+<p>
+This page is currently incomplete, all links will be slowly added in the future :)
+</p>
+</details>
 
 
 #### Learning, Comprehending & Understanding
@@ -113,9 +122,19 @@ It is also important to note from the research by Smith and Scarf(2017), and I q
 <details>
 <summary>Knowledge Links: A technique that forces you to associate one or more familiar concepts to something you do not know.</summary>
 
-
 <div markdown = 1>
-UNDER CONSTRUCTION :P
+Knowledge links are simply a metaphor to how your brain links from one neural node to the other. The Bridge between two concepts,
+a knowledge link is simply some kind of seemingly "logical explanation" that bridges the gap between two concepts. Most often
+concept A is familiar, and concept B is new.
+
+Babies utilize this unconsciously, for instance:
+
+people around the baby can show the them an "Apple" while uttering the sound of the word
+"Apple", the baby will touch, smell, hear, taste, and remember and feel of the environment that this "Apple" concept
+came from. Hence all of these "senses" are considered familar to them, but the scenario where "Apple" appears is foreign. This creates
+new *links* between the new and the old, allowing the baby to learn the concept of what an "Apple" is, without actually being explained
+it's definition in English, rather, for babies, it's defined through senses and feelings.
+
 </div>
 </details>
 
@@ -141,5 +160,12 @@ UNDER CONSTRUCTION :P
 
 #### Creativity & Exploration
  - Toolbox Method
- - Mind Maps
+
+<details>
+<summary><a href="https://en.wikipedia.org/wiki/Mind_map">Mind Maps</a>: Utilizes a diagram that requires you to visually categorize information into a hierarchical form, and allows you to view relationships in a whole.</summary>
+
+<div markdown = 1>
+UNDERCONSTRUCTION :)
+</div>
+</details>
 
